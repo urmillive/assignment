@@ -7,10 +7,12 @@
     server: {
       proxy: {
         '/api': {
-          target: 'http://localhost:4200',
+          target: 'http://localhost:4200/api',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        }
-      }
-    }
+          rewrite: (path) => {
+            return path.replace(/^\/api/, '')
+          },
+        },
+      },
+    }    
   });
