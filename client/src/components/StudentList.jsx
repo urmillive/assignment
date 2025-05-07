@@ -18,7 +18,7 @@ const StudentList = () => {
     const fetchStudents = async () => {
         try {
             const response = await axios.get(
-                `${process.env.REACT_APP_API_URL}/api/students?page=${pagination.page}&limit=${pagination.limit}`
+                `${import.meta.env.VITE_REACT_APP_API_URL}/api/students?page=${pagination.page}&limit=${pagination.limit}`
             );
             setStudents(response.data.students);
             setPagination({
@@ -34,7 +34,7 @@ const StudentList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this student?')) {
             try {
-                await axios.delete(`${process.env.REACT_APP_API_URL}/api/students/${id}`);
+                await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/api/students/${id}`);
                 fetchStudents();
             } catch (error) {
                 console.error(error);
