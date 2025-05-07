@@ -15,7 +15,7 @@ const StudentForm = () => {
 
     useEffect(() => {
         if (id) {
-            axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/api/students/${id}`)
+            axios.get(`/api/students/${id}`)
                 .then(response => setStudent(response.data))
                 .catch(error => console.error(error));
         }

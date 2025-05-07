@@ -7,10 +7,13 @@
     server: {
       proxy: {
         '/api': {
-          target: 'http://localhost:4200',
+          target: 'http://localhost:4200/api',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        }
-      }
-    }
+          rewrite: (path) => {
+            console.log('Rewriting path:', path); // Log the path being rewritten
+            return path.replace(/^\/api/, '')
+          },
+        },
+      },
+    }    
   });
