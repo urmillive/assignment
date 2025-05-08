@@ -15,7 +15,7 @@ const StudentForm = () => {
 
     useEffect(() => {
         if (id) {
-            axios.get(`${process.env.REACT_APP_API_URL}/api/students/${id}`)
+            axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/api/students/${id}`)
                 .then(response => setStudent(response.data))
                 .catch(error => console.error(error));
         }
@@ -42,8 +42,8 @@ const StudentForm = () => {
         e.preventDefault();
         const method = id ? 'put' : 'post';
         const url = id 
-            ? `${process.env.REACT_APP_API_URL}/api/students/${id}`
-            : `${process.env.REACT_APP_API_URL}/api/students`;
+            ? `${import.meta.env.VITE_REACT_APP_API_URL}/api/students/${id}`
+            : `${import.meta.env.VITE_REACT_APP_API_URL}/api/students`;
 
         axios[method](url, student)
             .then(() => navigate('/'))
